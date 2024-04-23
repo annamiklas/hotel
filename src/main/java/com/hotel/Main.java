@@ -7,9 +7,9 @@ public class Main {
         manager.run();
     }
 
-    // usunac pietro
-    // nr telefonu min 9
-    // dodać liczbe dni i cene jednostkowa po rezerwacji
-    // pytanie po rezerwacji -> czy chcesz polacić teraz
-    // dodac blika
+    // usunac pietro +
+    // nr telefonu min 9 +
+    // dodać liczbe dni i cene jednostkowa po rezerwacji +
+    // pytanie po rezerwacji -> czy chcesz polacić teraz +
+    // dodac blika +
 }

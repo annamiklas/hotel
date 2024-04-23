@@ -1,6 +1,5 @@
 package com.hotel.model;
 
-import com.hotel.model.payment.Card;
 
 import java.util.concurrent.atomic.AtomicLong;
 

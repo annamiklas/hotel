@@ -31,7 +31,7 @@ public class DateInputUtils {
     }
 
     private static Instant getDate(Scanner scanner) {
-        var datePattern = "\\d\\d\\d\\d-\\d\\d-\\d\\d";
+        var datePattern = "\\d{4}-\\d{2}-\\d{2}";
         try {
             final var localDate = LocalDate.parse(scanner.next(datePattern));
             final var localDateTime = localDate.atStartOfDay();

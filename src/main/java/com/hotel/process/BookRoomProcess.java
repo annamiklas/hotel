@@ -1,12 +1,13 @@
 package com.hotel.process;
 
-import com.hotel.utils.CustomerInputUtils;
-import com.hotel.utils.DateInputUtils;
-import com.hotel.utils.RoomInputUtils;
 import com.hotel.model.Booking;
 import com.hotel.model.Customer;
 import com.hotel.model.Hotel;
 import com.hotel.model.Room;
+import com.hotel.utils.CustomerInputUtils;
+import com.hotel.utils.DateInputUtils;
+import com.hotel.utils.GetChoiceInputUtils;
+import com.hotel.utils.RoomInputUtils;
 import lombok.RequiredArgsConstructor;
 import org.javatuples.Pair;
 
@@ -14,7 +15,7 @@ import java.time.Instant;
 import java.util.Scanner;
 
 @RequiredArgsConstructor
-public class BookRoomProcess implements Process{
+public class BookRoomProcess implements Process {
 
     private final Hotel hotel;
     private final Scanner scanner;
@@ -27,8 +28,16 @@ public class BookRoomProcess implements Process{
             return;
         }
         final var booking = this.bookRoom(room, dates);
-        // payment
         this.printInfo(booking);
+        this.tryPayment(booking);
+    }
+
+    private void tryPayment(Booking booking) {
+        final var choice = GetChoiceInputUtils.getBooleanChoice(scanner, "Czy chcesz dokonać płatności teraz?");
+        if (choice) {
+            final var paymentProcess = new PaymentProcess(hotel, scanner);
+            paymentProcess.run(booking);
+        }
     }
 
     private Room getRoom() {
@@ -43,10 +52,11 @@ public class BookRoomProcess implements Process{
     }
 
     private void printInfo(Booking booking) {
+        System.out.println("Liczba dni: " + booking.getDuration());
+        System.out.println("Cena za noc: " + booking.getPricePerDay());
         System.out.println("Cena całkowita: " + booking.getTotalPrice());
         System.out.println("Nr rezerwacji: " + booking.getBookingId());
-        System.out.println("UWAGA! Nr rezerwacji jest koniecy przy opłaceniu oraz odwałaniu, zapisz go!");
-        System.out.println("Istnieje możwliość opłacenia rezerwaji za pomocą karty kredytowej w apliakcji oraz gotówka na miejscu");
+        System.out.println("UWAGA! Nr rezerwacji jest koniecy przy płatności oraz odwałaniu, zapisz go!");
         System.out.println();
         System.out.println();
     }
@@ -62,8 +72,7 @@ public class BookRoomProcess implements Process{
     }
 
     private boolean isRoomIsFree(Pair<Instant, Instant> dates, Room room) {
-        final var roomData = new Pair<>(room.roomNumber(), room.floorNumber());
         final var freeRooms = hotel.findFreeRoomInDates(dates.getValue0(), dates.getValue1());
-        return freeRooms.stream().noneMatch(r -> r.isRoom(roomData));
+        return freeRooms.stream().noneMatch(r -> r.isNumber(room.roomNumber()));
     }
 }

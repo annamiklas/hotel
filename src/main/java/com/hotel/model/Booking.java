@@ -1,6 +1,5 @@
 package com.hotel.model;
 
-import com.hotel.model.payment.Payment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -21,17 +20,24 @@ public final class Booking {
     private final Instant fromDate;
     private final Instant toDate;
     private final BigDecimal totalPrice;
-    private Payment payment;
-    private Boolean paid;
+    private boolean paid;
 
     public static Booking create(final Instant from, final Instant to, final Customer customer, final Room room) {
         return new Booking(ID_GENERATOR.getAndIncrement(), customer, room, from, to,
-                getTotalPrice(from, to, room), null, false);
+                getTotalPrice(from, to, room), false);
     }
 
     private static BigDecimal getTotalPrice(final Instant from, final Instant to, final Room room) {
         final var nightsNumber = ChronoUnit.DAYS.between(from, to);
         return room.pricePerDay().multiply(new BigDecimal(nightsNumber));
+    }
+
+    public Long getDuration() {
+        return ChronoUnit.DAYS.between(this.fromDate, this.toDate);
+    }
+
+    public BigDecimal getPricePerDay() {
+        return this.room.pricePerDay();
     }
 
     public boolean isDateBetweenFromTo(final Instant date) {
@@ -58,13 +64,12 @@ public final class Booking {
                 Objects.equals(this.fromDate, that.fromDate) &&
                 Objects.equals(this.toDate, that.toDate) &&
                 Objects.equals(this.totalPrice, that.totalPrice) &&
-                Objects.equals(this.payment, that.payment) &&
                 Objects.equals(this.paid, that.paid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookingId, customer, room, fromDate, toDate, totalPrice, payment, paid);
+        return Objects.hash(bookingId, customer, room, fromDate, toDate, totalPrice, paid);
     }
 
 }

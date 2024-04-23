@@ -5,7 +5,6 @@ import org.javatuples.Pair;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -21,9 +20,8 @@ public record Room(Integer roomNumber, Integer floorNumber, Integer numberOfBeds
                 to.isBefore(booking.getFromDate()) && to.isBefore(booking.getToDate());
     }
 
-    public Boolean isRoom(final Pair<Integer, Integer> roomNumbers) {
-        return this.roomNumber.equals(roomNumbers.getValue0()) &&
-                this.floorNumber.equals(roomNumbers.getValue1());
+    public Boolean isNumber(final Integer roomNumber) {
+        return this.roomNumber.equals(roomNumber);
     }
 
     public Booking bookRoomInDates(Pair<Instant, Instant> dates, final Customer customer) {
@@ -38,7 +36,7 @@ public record Room(Integer roomNumber, Integer floorNumber, Integer numberOfBeds
 
     @Override
     public String toString() {
-        return "Pokoj: nr " + roomNumber + " pietro: "  + floorNumber + " Liczba osob: " + numberOfBeds +
+        return "Pokoj: nr " + roomNumber + " pietro: " + floorNumber + " Liczba osob: " + numberOfBeds +
                 " cena za noc: " + pricePerDay + " typ: " + type;
     }
 

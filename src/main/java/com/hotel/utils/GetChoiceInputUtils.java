@@ -16,9 +16,30 @@ public class GetChoiceInputUtils {
         return number;
     }
 
+    public static Boolean getBooleanChoice(final Scanner scanner, final String text) {
+        Boolean choice = null;
+        while (choice == null) {
+            System.out.println(text);
+            choice = tryGetBoolean(scanner);
+        }
+        return choice;
+    }
+
+
     private static Integer tryGetNumber(Scanner scanner) {
         try {
             return scanner.nextInt();
+        } catch (InputMismatchException ex) {
+            scanner.nextLine();
+            return null;
+        }
+    }
+
+    private static Boolean tryGetBoolean(Scanner scanner) {
+        final var pattern = "Tak|Nie";
+        try {
+            final var choice = scanner.next(pattern);
+            return choice.equals("Tak");
         } catch (InputMismatchException ex) {
             scanner.nextLine();
             return null;

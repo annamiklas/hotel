@@ -36,7 +36,7 @@ public class CancelBookingProcess implements Process {
     }
 
     private void printInfoForPaidBooking(Booking booking) {
-        if (booking.getPaid()) {
+        if (booking.isPaid()) {
             System.out.println("Rezerwacja została już opłacona, skontaktuj się z biorem obsługi kielnta w celu zwortu pieniędzy. Nr tel: +48 123 456 789");
         }
     }

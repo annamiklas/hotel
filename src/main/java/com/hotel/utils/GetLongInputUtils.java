@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GetLongInputUtils {
+
     public static Long getNumber(final Scanner scanner, final String text) {
         Long number = null;
         while (number == null) {

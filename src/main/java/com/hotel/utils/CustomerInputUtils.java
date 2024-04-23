@@ -36,9 +36,11 @@ public class CustomerInputUtils {
     }
 
     private static Integer tryGetPhoneNumber(Scanner scanner) {
+        var phoneNumberPattern = "\\d{9,}";
         try {
-            return scanner.nextInt();
-        } catch (InputMismatchException ex) {
+            final var input = scanner.next(phoneNumberPattern);
+            return Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
             System.out.println("Błędny format numberu telefonu!!");
             scanner.nextLine();
             return null;

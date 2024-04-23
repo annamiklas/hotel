@@ -1,11 +1,8 @@
 package com.hotel;
 
 import com.hotel.model.Hotel;
+import com.hotel.process.*;
 import com.hotel.utils.GetChoiceInputUtils;
-import com.hotel.process.BookRoomProcess;
-import com.hotel.process.CancelBookingProcess;
-import com.hotel.process.GetFreeRoomsProcess;
-import com.hotel.process.GetReportProcess;
 
 import java.util.Scanner;
 
@@ -46,9 +43,9 @@ public class InputManager {
                 break;
             }
             case 4: {
-                // wyszukanie booking
-                // podaj nr kary, data, cv
-                //
+                final var paymentProcess = new PaymentProcess(hotel, scanner);
+                paymentProcess.run();
+                break;
             }
             case 5: {
                 final var report = new GetReportProcess(hotel, scanner);

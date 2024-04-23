@@ -1,6 +1,5 @@
 package com.hotel.model;
 
-import com.hotel.model.payment.Payment;
 import org.javatuples.Pair;
 
 import java.math.BigDecimal;
@@ -11,7 +10,6 @@ import static com.hotel.model.Type.DELUXE;
 import static com.hotel.model.Type.STANDARD;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
-
 
 public class Hotel {
     private final List<Room> rooms;
@@ -26,7 +24,7 @@ public class Hotel {
         final var customer = new Customer(0L, "Ania", "M", "aaaa@aaa.pl", 123456);
         final var room1 = new Room(1, 1, 1, new BigDecimal(75), STANDARD, new ArrayList<>());
         final var booking = new Booking(0L, customer, room1, Instant.parse("2024-07-01T00:00:00.0000Z"),
-                Instant.parse("2024-07-03T00:00:00.0000Z"), new BigDecimal(150), null, false);
+                Instant.parse("2024-07-03T00:00:00.0000Z"), new BigDecimal(150), false);
         room1.bookings().add(booking);
         return List.of(room1,
                 new Room(2, 1, 1, new BigDecimal(75), STANDARD, new ArrayList<>()),
@@ -49,8 +47,8 @@ public class Hotel {
         return this.rooms.stream().filter(r -> r.hasNotAnyBookingInDates(from, to)).toList();
     }
 
-    public Optional<Room> getRoom(final Pair<Integer, Integer> room) {
-        return this.rooms.stream().filter(r -> r.isRoom(room)).findAny();
+    public Optional<Room> getRoom(final Integer roomNumber) {
+        return this.rooms.stream().filter(r -> r.isNumber(roomNumber)).findAny();
     }
 
     public Customer getExistingOrSaveNew(final Customer customer) {
