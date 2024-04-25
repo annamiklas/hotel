@@ -40,8 +40,11 @@ public final class Booking {
         return this.room.pricePerDay();
     }
 
-    public boolean isDateBetweenFromTo(final Instant date) {
-        return this.fromDate.equals(date) || this.fromDate.isAfter(date) && this.toDate.isBefore(date) || this.toDate.equals(date);
+    public boolean isDateBetweenFromTo(final Instant from, final Instant to) {
+        return this.fromDate.equals(from) || from.isBefore(this.fromDate) && to.isAfter(this.fromDate)
+                || to.equals(this.fromDate) || this.toDate.equals(from)
+                || from.isBefore(this.toDate) && to.isAfter(this.toDate)
+                || from.isAfter(this.fromDate) && to.isBefore(this.toDate);
     }
 
     public void pay() {
@@ -50,7 +53,7 @@ public final class Booking {
 
     @Override
     public String toString() {
-        return "Rezerwacja numer: " + bookingId + " od: " + fromDate + " do: " + toDate + "   Cena calkowita: " + totalPrice;
+        return "Rezerwacja numer: " + bookingId + " od: " + fromDate + " do: " + toDate + "   Cena calkowita: " + totalPrice + "  Zapłacone: " + isPaid();
     }
 
     @Override

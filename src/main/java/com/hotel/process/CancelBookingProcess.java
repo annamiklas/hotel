@@ -17,19 +17,25 @@ public class CancelBookingProcess implements Process {
 
     public void run() {
         this.printInfo();
-        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj id rezerwacji: ");
-        final var booking = hotel.findBooking(bookingNumber);
+        final var booking = getBooking();
         if (this.isCancellationDeadlinePast(booking)) {
             return;
         }
         this.printInfoForPaidBooking(booking);
-        hotel.cancelBooking(bookingNumber);
+        hotel.cancelBooking(booking.getBookingId());
+        System.out.println("Rezerwacja została anulowana!");
+    }
+
+    private Booking getBooking() {
+        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj id rezerwacji: ");
+        final var booking = hotel.findBooking(bookingNumber);
+        return booking.orElseGet(this::getBooking);
     }
 
     private boolean isCancellationDeadlinePast(Booking booking) {
         final var daysBetween = ChronoUnit.DAYS.between(Instant.now(), booking.getFromDate());
         if (daysBetween < 3) {
-            System.out.println("Rezerwacja zaczyną się z mniej niż 3 dni, odwołanie jest niemożliwe!");
+            System.out.println("Rezerwacja zaczyna się za mniej niż 3 dni, odwołanie jest niemożliwe!");
             return true;
         }
         return false;

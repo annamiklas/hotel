@@ -7,9 +7,7 @@ public class Main {
         manager.run();
     }
 
-    // usunac pietro +
-    // nr telefonu min 9 +
-    // dodać liczbe dni i cene jednostkowa po rezerwacji +
-    // pytanie po rezerwacji -> czy chcesz polacić teraz +
-    // dodac blika +
+    // zoabzczyc czy customer działa
+    // daty z przeszłości
+    // podawać gdzieś srodki na koncie
 }

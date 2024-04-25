@@ -40,7 +40,7 @@ public class CustomerInputUtils {
         try {
             final var input = scanner.next(phoneNumberPattern);
             return Integer.parseInt(input);
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException | InputMismatchException ex) {
             System.out.println("Błędny format numberu telefonu!!");
             scanner.nextLine();
             return null;

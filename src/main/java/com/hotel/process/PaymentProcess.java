@@ -15,11 +15,16 @@ public class PaymentProcess implements Process {
     private final Scanner scanner;
 
     public void run() {
-        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj id rezerwacji: ");
-        final var booking = hotel.findBooking(bookingNumber);
+        final var booking = getBooking();
         final var payment = GetPaymentInputUtils.getPayment(scanner);
         final var paymentResult = payment.payIfRequired(booking);
         this.handlePaymentResult(paymentResult);
+    }
+
+    private Booking getBooking() {
+        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj id rezerwacji: ");
+        final var booking = hotel.findBooking(bookingNumber);
+        return booking.orElseGet(this::getBooking);
     }
 
     public void run(final Booking booking) {
@@ -30,7 +35,7 @@ public class PaymentProcess implements Process {
 
     private void handlePaymentResult(boolean paymentResult) {
         if (!paymentResult) {
-            System.out.println("Płatność nieudana, sprobuj jeszcze raz");
+            System.out.println("Płatność nieudana!");
             return;
         }
         System.out.println("Płatność powiodła się, dziękujemy!");

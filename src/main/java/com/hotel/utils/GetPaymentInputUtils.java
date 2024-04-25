@@ -20,16 +20,16 @@ public class GetPaymentInputUtils {
     }
 
     private static Integer getBlikCode(final Scanner scanner) {
-        Integer blik = null;
+        Long blik = null;
         while (blik == null) {
             System.out.println("Wpisz 6-cyfrowy kod BLIK");
             blik = tryGetNumber(scanner, "\\d{6}", "Wpisz 6-cyfrowy kod BLIK");
         }
-        return blik;
+        return blik.intValue();
     }
 
-    private static Integer getCardNumber(final Scanner scanner) {
-        Integer cardNumber = null;
+    private static Long getCardNumber(final Scanner scanner) {
+        Long cardNumber = null;
         while (cardNumber == null) {
             System.out.println("Wpisz 16-cyfrowy numer karty");
             cardNumber = tryGetNumber(scanner, "\\d{16}", "Wpisz 16-cyfrowy numer karty");
@@ -38,12 +38,12 @@ public class GetPaymentInputUtils {
     }
 
     private static Integer getCardPin(final Scanner scanner) {
-        Integer cardNumber = null;
+        Long cardNumber = null;
         while (cardNumber == null) {
             System.out.println("Wpisz 4-cyfrowy pin karty");
             cardNumber = tryGetNumber(scanner, "\\d{4}", "Wpisz 4-cyfrowy pin karty");
         }
-        return cardNumber;
+        return cardNumber.intValue();
     }
 
     private static Payment getPayment(PaymentMethodEnum paymentMethod, Scanner scanner) {
@@ -54,16 +54,16 @@ public class GetPaymentInputUtils {
     }
 
     private static Payment getCard(Scanner scanner) {
-        final var code = getBlikCode(scanner);
-        final var blikPayment = new BlikPayment(code);
-        return new Payment(blikPayment);
-    }
-
-    private static Payment getBlik(Scanner scanner) {
         final var cardNumber = getCardNumber(scanner);
         final var pin = getCardPin(scanner);
         final var cardPayment = new CardPayment(cardNumber, pin);
         return new Payment(cardPayment);
+    }
+
+    private static Payment getBlik(Scanner scanner) {
+        final var code = getBlikCode(scanner);
+        final var blikPayment = new BlikPayment(code);
+        return new Payment(blikPayment);
     }
 
     private static PaymentMethodEnum getPaymentMethod(Scanner scanner) {
@@ -78,10 +78,10 @@ public class GetPaymentInputUtils {
         }
     }
 
-    private static Integer tryGetNumber(Scanner scanner, String pattern, String text) {
+    private static Long tryGetNumber(Scanner scanner, String pattern, String text) {
         try {
             final var code = scanner.next(pattern);
-            return Integer.parseInt(code);
+            return Long.parseLong(code);
         } catch (InputMismatchException | IllegalArgumentException ex) {
             System.out.println(text);
             scanner.nextLine();

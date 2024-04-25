@@ -33,7 +33,7 @@ public class BookRoomProcess implements Process {
     }
 
     private void tryPayment(Booking booking) {
-        final var choice = GetChoiceInputUtils.getBooleanChoice(scanner, "Czy chcesz dokonać płatności teraz?");
+        final var choice = GetChoiceInputUtils.getBooleanChoice(scanner, "Czy chcesz dokonać płatności teraz? Wpisz Tak lub Nie");
         if (choice) {
             final var paymentProcess = new PaymentProcess(hotel, scanner);
             paymentProcess.run(booking);

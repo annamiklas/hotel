@@ -60,11 +60,11 @@ public class Hotel {
         return customer;
     }
 
-    public Booking findBooking(long bookingNumber) {
-        final var room = this.rooms.stream().filter(r -> r.hasBooking(bookingNumber)).findFirst().orElseThrow();
-        return room.bookings().stream()
+    public Optional<Booking> findBooking(long bookingNumber) {
+        final var room = this.rooms.stream().filter(r -> r.hasBooking(bookingNumber)).findFirst();
+        return room.flatMap(value -> value.bookings().stream()
                 .filter(b -> b.getBookingId().equals(bookingNumber))
-                .findAny().orElseThrow();
+                .findAny());
     }
 
     public void cancelBooking(long bookingNumber) {
@@ -80,7 +80,7 @@ public class Hotel {
         final var to = dates.getValue1();
         return this.rooms.stream().map(Room::bookings)
                 .flatMap(Collection::stream)
-                .filter(b -> b.isDateBetweenFromTo(from) || b.isDateBetweenFromTo(to))
+                .filter(b -> b.isDateBetweenFromTo(from, to))
                 .collect(groupingBy(Booking::getRoom, toList()));
     }
 }

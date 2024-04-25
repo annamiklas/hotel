@@ -12,7 +12,7 @@ public class RoomInputUtils {
         Integer number = getNumber(scanner);
         if (number < MIN_ROOM_NUMBER || number > MAX_ROOM_NUMBER) {
             System.out.println("Podany pokoj nie istnieje");
-            System.out.println("Numer pokoju nie może być więszky niż " + MAX_ROOM_NUMBER + " i mniejszy niż " + MIN_ROOM_NUMBER);
+            System.out.println("Numer pokoju nie może być mniejszy niż " + MIN_ROOM_NUMBER  + " oraz więszky niż " + MAX_ROOM_NUMBER);
             getNumber(scanner);
         }
         return number;

@@ -16,7 +16,7 @@ public class DateInputUtils {
         Instant to = getDate(scanner, "Podaj date do:  (format YYYY-MM-DD)");
         if (from.isAfter(to)) {
             System.out.println("Data od nie może być wcześniejsza od daty do!");
-            getDates(scanner);
+            return getDates(scanner);
         }
         return new Pair<>(from, to);
     }
