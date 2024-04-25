@@ -1,6 +1,6 @@
 package com.hotel.process;
 
-import com.hotel.utils.DateInputUtils;
+import com.hotel.utils.GetDateInputUtils;
 import com.hotel.model.Booking;
 import com.hotel.model.Hotel;
 import com.hotel.model.Room;
@@ -19,7 +19,7 @@ public class GetReportProcess implements Process {
     private final Scanner scanner;
 
     public void run() {
-        final var dates = DateInputUtils.getDates(scanner);
+        final var dates = GetDateInputUtils.getDates(scanner);
         final var report = hotel.getReport(dates);
         this.printReport(report);
     }

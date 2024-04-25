@@ -1,6 +1,6 @@
 package com.hotel.process;
 
-import com.hotel.utils.DateInputUtils;
+import com.hotel.utils.GetDateInputUtils;
 import com.hotel.model.Hotel;
 import lombok.RequiredArgsConstructor;
 
@@ -13,7 +13,7 @@ public class GetFreeRoomsProcess implements Process {
     private final Scanner scanner;
 
     public void run() {
-        final var dates = DateInputUtils.getDates(this.scanner);
+        final var dates = GetDateInputUtils.getDates(this.scanner);
         final var rooms = this.hotel.findFreeRoomInDates(dates.getValue0(), dates.getValue1());
         rooms.forEach(System.out::println);
         System.out.println();

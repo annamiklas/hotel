@@ -9,13 +9,17 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class DateInputUtils {
+public class GetDateInputUtils {
 
     public static Pair<Instant, Instant> getDates(final Scanner scanner) {
         Instant from = getDate(scanner, "Podaj date od:  (format YYYY-MM-DD)");
         Instant to = getDate(scanner, "Podaj date do:  (format YYYY-MM-DD)");
         if (from.isAfter(to)) {
             System.out.println("Data od nie może być wcześniejsza od daty do!");
+            return getDates(scanner);
+        }
+        if (from.isBefore(Instant.now())) {
+            System.out.println("Data od nie może być wcześniejsze od daty aktualnej!");
             return getDates(scanner);
         }
         return new Pair<>(from, to);

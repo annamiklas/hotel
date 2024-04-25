@@ -8,6 +8,5 @@ public class Main {
     }
 
     // zoabzczyc czy customer działa
-    // daty z przeszłości
     // podawać gdzieś srodki na koncie
 }

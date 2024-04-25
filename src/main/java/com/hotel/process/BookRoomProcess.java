@@ -5,7 +5,7 @@ import com.hotel.model.Customer;
 import com.hotel.model.Hotel;
 import com.hotel.model.Room;
 import com.hotel.utils.CustomerInputUtils;
-import com.hotel.utils.DateInputUtils;
+import com.hotel.utils.GetDateInputUtils;
 import com.hotel.utils.GetChoiceInputUtils;
 import com.hotel.utils.RoomInputUtils;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class BookRoomProcess implements Process {
 
     public void run() {
         final var room = getRoom();
-        final var dates = DateInputUtils.getDates(scanner);
+        final var dates = GetDateInputUtils.getDates(scanner);
         if (this.isRoomIsFree(dates, room)) {
             System.out.println("Pokoj jest już zajęty w tym terminie");
             return;
