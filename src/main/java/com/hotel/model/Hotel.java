@@ -51,7 +51,7 @@ public class Hotel {
         return this.rooms.stream().filter(r -> r.isNumber(roomNumber)).findAny();
     }
 
-    public Customer getExistingOrSaveNew(final Customer customer) {
+    public Customer getExistingOrSaveNewCustomer(final Customer customer) {
         final var existing = this.customers.stream().filter(c -> c.email().equals(customer.email())).findAny();
         if (existing.isPresent()) {
             return existing.get();

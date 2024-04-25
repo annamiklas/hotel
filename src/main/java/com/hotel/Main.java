@@ -7,6 +7,5 @@ public class Main {
         manager.run();
     }
 
-    // zoabzczyc czy customer działa
     // podawać gdzieś srodki na koncie
 }

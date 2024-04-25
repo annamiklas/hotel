@@ -68,7 +68,7 @@ public class BookRoomProcess implements Process {
 
     private Customer getCustomer() {
         final var customerData = CustomerInputUtils.getCustomer(scanner);
-        return hotel.getExistingOrSaveNew(customerData);
+        return hotel.getExistingOrSaveNewCustomer(customerData);
     }
 
     private boolean isRoomIsFree(Pair<Instant, Instant> dates, Room room) {
