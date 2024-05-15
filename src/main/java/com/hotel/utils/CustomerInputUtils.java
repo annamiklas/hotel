@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class CustomerInputUtils {
 
     public static Customer getCustomer(final Scanner scanner) {
-        System.out.println("Podaj imie: ");
+        System.out.println("Podaj imię: ");
         final var name = scanner.next();
         System.out.println("Podaj nazwisko: ");
         final var surname = scanner.next();
@@ -52,7 +52,7 @@ public class CustomerInputUtils {
         try {
             return scanner.next(emailPattern);
         } catch (InputMismatchException ex) {
-            System.out.println("Błędny format adresu emial!!");
+            System.out.println("Błędny format adresu email!!");
             scanner.nextLine();
             return null;
         }

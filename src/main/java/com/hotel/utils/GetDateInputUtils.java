@@ -12,14 +12,14 @@ import java.util.Scanner;
 public class GetDateInputUtils {
 
     public static Pair<Instant, Instant> getDates(final Scanner scanner) {
-        Instant from = getDate(scanner, "Podaj date od:  (format YYYY-MM-DD)");
-        Instant to = getDate(scanner, "Podaj date do:  (format YYYY-MM-DD)");
+        Instant from = getDate(scanner, "Podaj datę od:  (format YYYY-MM-DD)");
+        Instant to = getDate(scanner, "Podaj datę do:  (format YYYY-MM-DD)");
         if (from.isAfter(to)) {
             System.out.println("Data od nie może być wcześniejsza od daty do!");
             return getDates(scanner);
         }
         if (from.isBefore(Instant.now())) {
-            System.out.println("Data od nie może być wcześniejsze od daty aktualnej!");
+            System.out.println("Data od nie może być wcześniejsza od daty aktualnej!");
             return getDates(scanner);
         }
         return new Pair<>(from, to);
@@ -41,7 +41,7 @@ public class GetDateInputUtils {
             final var localDateTime = localDate.atStartOfDay();
             return localDateTime.toInstant(ZoneOffset.UTC);
         } catch (InputMismatchException | DateTimeParseException ex) {
-            System.out.println("Błędy format daty, spróbuj jeszcze raz");
+            System.out.println("Błędny format daty, spróbuj jeszcze raz");
             scanner.nextLine();
             return null;
         }

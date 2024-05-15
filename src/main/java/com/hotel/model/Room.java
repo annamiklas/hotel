@@ -36,7 +36,7 @@ public record Room(Integer roomNumber, Integer floorNumber, Integer numberOfBeds
 
     @Override
     public String toString() {
-        return "Pokoj: nr " + roomNumber + " pietro: " + floorNumber + " Liczba osob: " + numberOfBeds +
+        return "Pokój: nr " + roomNumber + " piętro: " + floorNumber + " Liczba osób: " + numberOfBeds +
                 " cena za noc: " + pricePerDay + " typ: " + type;
     }
 

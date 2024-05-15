@@ -41,11 +41,10 @@ public class BookRoomProcess implements Process {
     }
 
     private Room getRoom() {
-        // tu nie działa, zapetla się -> 16 , 10
         var roomData = RoomInputUtils.getRoom(scanner);
         var room = hotel.getRoom(roomData);
         while (room.isEmpty()) {
-            System.out.println("Pokoj nie istnieje, podaj inny numer");
+            System.out.println("Pokój nie istnieje, podaj inny numer");
             roomData = RoomInputUtils.getRoom(scanner);
             room = hotel.getRoom(roomData);
         }
@@ -57,7 +56,7 @@ public class BookRoomProcess implements Process {
         System.out.println("Cena za noc: " + booking.getPricePerDay());
         System.out.println("Cena całkowita: " + booking.getTotalPrice());
         System.out.println("Nr rezerwacji: " + booking.getBookingId());
-        System.out.println("UWAGA! Nr rezerwacji jest koniecy przy płatności oraz odwałaniu, zapisz go!");
+        System.out.println("UWAGA! Nr rezerwacji jest konieczny przy płatności oraz odwołaniu, zapisz go!");
         System.out.println();
         System.out.println();
     }

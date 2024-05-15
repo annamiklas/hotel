@@ -53,7 +53,7 @@ public final class Booking {
 
     @Override
     public String toString() {
-        return "Rezerwacja numer: " + bookingId + " od: " + fromDate + " do: " + toDate + "   Cena calkowita: " + totalPrice + "  Zapłacone: " + isPaid();
+        return "Rezerwacja numer: " + bookingId + " od: " + fromDate + " do: " + toDate + "   Cena całkowita: " + totalPrice + "  Zapłacone: " + isPaid();
     }
 
     @Override

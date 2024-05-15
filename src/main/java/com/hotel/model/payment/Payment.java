@@ -25,7 +25,7 @@ public class Payment {
         }
         this.pay(booking);
         System.out.println("Płatność powiodła się, dziękujemy!");
-        System.out.println("Pobrana kowta: " + booking.getTotalPrice());
+        System.out.println("Pobrana kwota: " + booking.getTotalPrice());
         System.out.println("Pozostała kwota w banku: " + bankAccount.getAmount());
         return true;
     }
@@ -41,11 +41,11 @@ public class Payment {
             return true;
         }
         if (!this.paymentMethod.isAuthorized()) {
-            System.out.println("Nie udało się zautoryzwoać płatności, sprobuj ponownie!");
+            System.out.println("Nie udało się zautoryzować płatności, spróbuj ponownie!");
             return true;
         }
         if (this.bankAccount.hasEnoughAmount(booking.getTotalPrice())) {
-            System.out.println("Nie masz wystrczających srodkow na koncie");
+            System.out.println("Nie masz wystarczających środków na koncie");
             return true;
         }
         return false;

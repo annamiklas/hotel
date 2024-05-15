@@ -34,8 +34,8 @@ public class GetReportProcess implements Process {
         });
         System.out.println();
         System.out.println("Podsumowanie");
-        System.out.println("Liczba wszytskich rezwerwacij: " + totalNumber);
-        System.out.println("Kwota wszystkich rezwerwacij: " +  totalPrice);
+        System.out.println("Liczba wszytskich rezerwacji: " + totalNumber);
+        System.out.println("Kwota wszystkich rezerwacji: " +  totalPrice);
         System.out.println();
         System.out.println();
     }

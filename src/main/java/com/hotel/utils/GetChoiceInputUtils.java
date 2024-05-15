@@ -39,7 +39,7 @@ public class GetChoiceInputUtils {
         final var pattern = "Tak|Nie|tak|nie|TAK|NIE";
         try {
             final var choice = scanner.next(pattern);
-            return choice.equals("Tak");
+            return choice.equalsIgnoreCase("tak");
         } catch (InputMismatchException ex) {
             scanner.nextLine();
             return null;

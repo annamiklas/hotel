@@ -11,9 +11,9 @@ public class RoomInputUtils {
     public static Integer getRoom(final Scanner scanner) {
         Integer number = getNumber(scanner);
         if (number < MIN_ROOM_NUMBER || number > MAX_ROOM_NUMBER) {
-            System.out.println("Podany pokoj nie istnieje");
-            System.out.println("Numer pokoju nie może być mniejszy niż " + MIN_ROOM_NUMBER  + " oraz więszky niż " + MAX_ROOM_NUMBER);
-            getNumber(scanner);
+            System.out.println("Podany pokój  nie istnieje");
+            System.out.println("Numer pokoju nie może być mniejszy niż " + MIN_ROOM_NUMBER  + " oraz większy niż " + MAX_ROOM_NUMBER);
+            number = getNumber(scanner);
         }
         return number;
     }

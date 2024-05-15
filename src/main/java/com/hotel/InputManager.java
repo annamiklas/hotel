@@ -53,7 +53,7 @@ public class InputManager {
                 break;
             }
             case 6: {
-                System.out.println("Dziękujemy za odwiedziny, zapraszamy ponowanie :)");
+                System.out.println("Dziękujemy za odwiedziny, zapraszamy ponownie :)");
                 System.exit(0);
             }
         }
@@ -62,8 +62,8 @@ public class InputManager {
     private static void greeting() {
         final var greeting = """
                     Witamy w naszym hotelu NiceNight!
-                    Działamy na runku już od 12 lat i cieszymy się świetną opinią naszych kilentów.
-                    Dysponujemy aż 15 pokojami, z czego 10 jest typu Standart a 5 Deluxe.
+                    Działamy na rynku już od 12 lat i cieszymy się świetną opinią naszych klientów.
+                    Dysponujemy aż 15 pokojami, z czego 10 jest typu Standard a 5 Deluxe.
                 """;
         System.out.println(greeting);
     }
@@ -71,12 +71,12 @@ public class InputManager {
     private static void actions() {
         final var actions = """
                    Wybierz jakie działanie chcesz wykonać:
-                   1. Sprawdż dostępność pokoji w przedziale dat
-                   2. Zarazerwuj pokój
-                   3. Odwołaj rezerwaję
+                   1. Sprawdź dostępność pokoi w przedziale dat
+                   2. Zarezerwuj pokój
+                   3. Odwołaj rezerwację
                    4. Opłać rezerwację
                    5. Pokaż raport
-                   6. Zakoncz program
+                   6. Zakończ program
                 """;
         System.out.println(actions);
     }

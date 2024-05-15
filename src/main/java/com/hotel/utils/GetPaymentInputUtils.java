@@ -13,7 +13,7 @@ public class GetPaymentInputUtils {
     public static Payment getPayment(final Scanner scanner) {
         PaymentMethodEnum paymentMethod = null;
         while (paymentMethod == null) {
-            System.out.println("Wybierz metode płatności: BLIK lub CARD");
+            System.out.println("Wybierz metodę płatności: BLIK lub CARD");
             paymentMethod = getPaymentMethod(scanner);
         }
         return getPayment(paymentMethod, scanner);
@@ -70,7 +70,7 @@ public class GetPaymentInputUtils {
         final var pattern = "CARD|BLIK|card|blik|Card|Blik";
         try {
             final var paymentMethod = scanner.next(pattern);
-            return PaymentMethodEnum.valueOf(paymentMethod);
+            return PaymentMethodEnum.valueOf(paymentMethod.toUpperCase());
         } catch (InputMismatchException | IllegalArgumentException ex) {
             System.out.println("Wpisz BLIK lub CARD!");
             scanner.nextLine();

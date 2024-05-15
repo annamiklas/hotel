@@ -30,7 +30,7 @@ public class CancelBookingProcess implements Process {
         final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj numer rezerwacji: ");
         final var booking = hotel.findBooking(bookingNumber);
         return booking.orElseGet(() -> {
-            System.out.println("Podana rezerwacja nie istanieje, wpisz inne id!");
+            System.out.println("Podana rezerwacja nie istnieje, wpisz inny numer!");
             return this.getBooking();
         });
     }
@@ -46,11 +46,11 @@ public class CancelBookingProcess implements Process {
 
     private void printInfoForPaidBooking(Booking booking) {
         if (booking.isPaid()) {
-            System.out.println("Rezerwacja została już opłacona, skontaktuj się z biorem obsługi kielnta w celu zwortu pieniędzy. Nr tel: +48 123 456 789");
+            System.out.println("Rezerwacja została już opłacona, skontaktuj się z biurem obsługi klienta  w celu zwrotu pieniędzy. Nr tel: +48 123 456 789");
         }
     }
 
     private void printInfo() {
-        System.out.println("Odawołanie rezerwacji jest możwliwe do 3 dni przed poczatkiem pobytu.");
+        System.out.println("Odwołanie  rezerwacji jest możliwe  do 3 dni przed początkiem pobytu.");
     }
 }
