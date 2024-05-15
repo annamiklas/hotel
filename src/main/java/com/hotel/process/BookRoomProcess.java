@@ -41,6 +41,7 @@ public class BookRoomProcess implements Process {
     }
 
     private Room getRoom() {
+        // tu nie działa, zapetla się -> 16 , 10
         var roomData = RoomInputUtils.getRoom(scanner);
         var room = hotel.getRoom(roomData);
         while (room.isEmpty()) {

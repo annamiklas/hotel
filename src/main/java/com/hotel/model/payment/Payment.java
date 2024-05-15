@@ -24,6 +24,9 @@ public class Payment {
             return false;
         }
         this.pay(booking);
+        System.out.println("Płatność powiodła się, dziękujemy!");
+        System.out.println("Pobrana kowta: " + booking.getTotalPrice());
+        System.out.println("Pozostała kwota w banku: " + bankAccount.getAmount());
         return true;
     }
 
@@ -50,7 +53,7 @@ public class Payment {
 
     private BigDecimal randomAmount() {
         final var random = new Random();
-        final var randomInt = random.nextInt(50, 300);
+        final var randomInt = random.nextInt(500, 2000);
         return new BigDecimal(randomInt);
     }
 }

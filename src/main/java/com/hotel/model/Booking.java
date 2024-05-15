@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @AllArgsConstructor
 public final class Booking {
 
-    private static final AtomicLong ID_GENERATOR = new AtomicLong(1);
+    private static final AtomicLong ID_GENERATOR = new AtomicLong(2);
     private final Long bookingId;
     private final Customer customer;
     private final Room room;

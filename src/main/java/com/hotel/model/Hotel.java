@@ -23,7 +23,7 @@ public class Hotel {
     private static List<Room> getRooms() {
         final var customer = new Customer(0L, "Ania", "M", "aaaa@aaa.pl", 123456);
         final var room1 = new Room(1, 1, 1, new BigDecimal(75), STANDARD, new ArrayList<>());
-        final var booking = new Booking(0L, customer, room1, Instant.parse("2024-07-01T00:00:00.0000Z"),
+        final var booking = new Booking(1L, customer, room1, Instant.parse("2024-07-01T00:00:00.0000Z"),
                 Instant.parse("2024-07-03T00:00:00.0000Z"), new BigDecimal(150), false);
         room1.bookings().add(booking);
         return List.of(room1,

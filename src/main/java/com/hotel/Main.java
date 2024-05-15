@@ -6,6 +6,4 @@ public class Main {
         final var manager = new InputManager();
         manager.run();
     }
-
-    // podawać gdzieś srodki na koncie
 }

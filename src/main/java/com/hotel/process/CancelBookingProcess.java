@@ -27,9 +27,12 @@ public class CancelBookingProcess implements Process {
     }
 
     private Booking getBooking() {
-        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj id rezerwacji: ");
+        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj numer rezerwacji: ");
         final var booking = hotel.findBooking(bookingNumber);
-        return booking.orElseGet(this::getBooking);
+        return booking.orElseGet(() -> {
+            System.out.println("Podana rezerwacja nie istanieje, wpisz inne id!");
+            return this.getBooking();
+        });
     }
 
     private boolean isCancellationDeadlinePast(Booking booking) {

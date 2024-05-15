@@ -67,7 +67,7 @@ public class GetPaymentInputUtils {
     }
 
     private static PaymentMethodEnum getPaymentMethod(Scanner scanner) {
-        final var pattern = "CARD|BLIK";
+        final var pattern = "CARD|BLIK|card|blik|Card|Blik";
         try {
             final var paymentMethod = scanner.next(pattern);
             return PaymentMethodEnum.valueOf(paymentMethod);

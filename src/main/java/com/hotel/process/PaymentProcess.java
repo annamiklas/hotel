@@ -22,7 +22,7 @@ public class PaymentProcess implements Process {
     }
 
     private Booking getBooking() {
-        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj id rezerwacji: ");
+        final var bookingNumber = GetLongInputUtils.getNumber(scanner, "Podaj numer rezerwacji: ");
         final var booking = hotel.findBooking(bookingNumber);
         return booking.orElseGet(this::getBooking);
     }
@@ -36,8 +36,6 @@ public class PaymentProcess implements Process {
     private void handlePaymentResult(boolean paymentResult) {
         if (!paymentResult) {
             System.out.println("Płatność nieudana!");
-            return;
         }
-        System.out.println("Płatność powiodła się, dziękujemy!");
     }
 }

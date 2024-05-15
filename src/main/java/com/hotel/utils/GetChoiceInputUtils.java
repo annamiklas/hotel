@@ -36,7 +36,7 @@ public class GetChoiceInputUtils {
     }
 
     private static Boolean tryGetBoolean(Scanner scanner) {
-        final var pattern = "Tak|Nie";
+        final var pattern = "Tak|Nie|tak|nie|TAK|NIE";
         try {
             final var choice = scanner.next(pattern);
             return choice.equals("Tak");

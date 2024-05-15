@@ -41,7 +41,7 @@ public class CustomerInputUtils {
             final var input = scanner.next(phoneNumberPattern);
             return Integer.parseInt(input);
         } catch (NumberFormatException | InputMismatchException ex) {
-            System.out.println("Błędny format numberu telefonu!!");
+            System.out.println("Błędny format numeru telefonu!!");
             scanner.nextLine();
             return null;
         }
