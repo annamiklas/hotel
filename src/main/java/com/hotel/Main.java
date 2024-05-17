@@ -7,4 +7,3 @@ public class Main {
         manager.run();
     }
 }
-// żle schodzi z konta

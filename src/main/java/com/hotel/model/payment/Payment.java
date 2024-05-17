@@ -20,13 +20,14 @@ public class Payment {
     }
 
     public boolean payIfRequired(final Booking booking) {
+        System.out.println("Początkowa kwota: " + this.bankAccount.getAmount());
         if (validPayment(booking)) {
             return false;
         }
         this.pay(booking);
         System.out.println("Płatność powiodła się, dziękujemy!");
         System.out.println("Pobrana kwota: " + booking.getTotalPrice());
-        System.out.println("Pozostała kwota w banku: " + bankAccount.getAmount());
+        System.out.println("Pozostała kwota w banku: " + this.bankAccount.getAmount());
         return true;
     }
 
