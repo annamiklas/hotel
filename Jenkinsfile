@@ -2,6 +2,10 @@ pipeline {
 
     agent any
 
+    tools {
+        mnv 'maven 3'
+    }
+
     stages {
         stage("build") {
             steps {
