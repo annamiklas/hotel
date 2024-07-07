@@ -5,5 +5,6 @@ public class Main {
     public static void main(String[] args) {
         final var manager = new InputManager();
         manager.run();
+        System.out.println("HELLO");
     }
 }
